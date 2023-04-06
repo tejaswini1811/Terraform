@@ -12,6 +12,7 @@ stages:
             provider: 'aws'
             command: 'init'
             workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
+            backendServiceAWS: 'aws'
         - task: TerraformTaskV4@4
           inputs:
             provider: 'aws'
