@@ -1,0 +1,20 @@
+---
+pool: 'Default'
+trigger:
+  - main
+stages:
+  - stage: terraform_init
+    jobs:
+      - job: terraform_init 
+        steps:
+        - task: TerraformTaskV4@4
+          inputs:
+            provider: 'aws'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
+        - task: TerraformTaskV4@4
+          inputs:
+            provider: 'aws'
+            command: 'apply'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
+            environmentServiceNameAWS: 'aws'
