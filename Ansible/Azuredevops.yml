@@ -1,0 +1,23 @@
+---
+pool: 'Default'
+trigger:
+  - main
+stages:
+  - stage: install_ansible
+    jobs:
+      - job: install_ansible 
+        steps:
+        - task: TerraformTaskV4@4
+          inputs:
+            provider: 'aws'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/Ansible'
+            backendServiceAWS: 'aws'
+            backendAWSBucketName: 'ansible1811'
+            backendAWSKey: 'terraform/terraform.tfstate'
+        - task: TerraformTaskV4@4
+          inputs:
+            provider: 'aws'
+            command: 'apply'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/Ansible'
+            environmentServiceNameAWS: 'aws'

@@ -1,0 +1,15 @@
+---
+pool: 'Default'
+trigger:
+  - main
+stages:
+  - stage: install_ansible
+    jobs:
+      - job: install_ansible 
+        steps:
+        - task: TerraformTaskV4@4
+          inputs:
+            provider: 'aws'
+            command: 'destroy'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/Ansible'
+            environmentServiceNameAWS: 'aws'

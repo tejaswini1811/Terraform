@@ -32,7 +32,7 @@ resource "aws_instance" "instances" {
   key_name          = each.value.key_name
   availability_zone = each.value.availability_zone
   security_groups   = [data.aws_security_group.all_clear.name]
-  user_data         = file(each.value.user_data)
+  # user_data         = file(each.value.user_data)
   tags = {
     "Name" = each.key
   }
@@ -45,7 +45,7 @@ resource "null_resource" "null" {
   connection {
     host        = aws_instance.instances[each.key].public_ip
     user        = "ubuntu"
-    private_key = file("~/.ssh/id_rsa")
+    private_key = file("/home/ubuntu/.ssh/id_rsa")
     type        = "ssh"
   }
   provisioner "file" {
