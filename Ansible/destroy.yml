@@ -1,14 +1,22 @@
 ---
 pool: 'Default'
 trigger:
-  - main
+  - azuredevops
 stages:
   - stage: install_ansible
     jobs:
       - job: install_ansible 
         steps:
-        - task: TerraformTaskV4@4
-          inputs:
+         - task: TerraformTaskV4@4
+           inputs:
+            provider: 'aws'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/Ansible'
+            backendServiceAWS: 'aws'
+            backendAWSBucketName: 'ansible1811'
+            backendAWSKey: 'terraform/terraform.tfstate'
+         - task: TerraformTaskV4@4
+           inputs:
             provider: 'aws'
             command: 'destroy'
             workingDirectory: '$(System.DefaultWorkingDirectory)/Ansible'

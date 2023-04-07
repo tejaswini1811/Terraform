@@ -19,9 +19,9 @@ variable "instances_info" {
     availability_zone = string
   }))
   default = {
-   "ansible" = {
+   "Ansible" = {
     instance_type     = "t2.micro"
-    key_name          = "impkey"
+    key_name          = "azure"
     availability_zone = "us-west-2a"
     user_data         = "ansible.sh"
   }

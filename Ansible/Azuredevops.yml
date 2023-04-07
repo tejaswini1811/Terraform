@@ -1,7 +1,12 @@
 ---
 pool: 'Default'
 trigger:
-  - main
+  - azuredevops
+parameters:
+  - name: s3_Bucket
+    displayName: S3 Bucket
+    type: string
+    default: ansible1811
 stages:
   - stage: install_ansible
     jobs:
@@ -13,7 +18,7 @@ stages:
             command: 'init'
             workingDirectory: '$(System.DefaultWorkingDirectory)/Ansible'
             backendServiceAWS: 'aws'
-            backendAWSBucketName: 'ansible1811'
+            backendAWSBucketName:  ${{ parameters.s3_Bucket }}
             backendAWSKey: 'terraform/terraform.tfstate'
         - task: TerraformTaskV4@4
           inputs:
