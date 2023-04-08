@@ -1,0 +1,14 @@
+---
+pool: 'Default'
+trigger:
+  - azuredevops
+stages:
+  - stage: install_ansible
+    jobs:
+      - job: ansible 
+        steps:
+        - script: terraform init
+        - script: terraform fmt
+        - script: terraform validate
+        - script: terraform apply -var-file var.tfvars -auto-approve
+       
