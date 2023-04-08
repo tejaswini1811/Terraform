@@ -1,14 +1,14 @@
 variable "region" {
-  type = string
+  type    = string
   default = "us-west-2"
 }
 
 variable "availability_zone" {
-  type = list(string)
+  type    = list(string)
   default = ["us-west-2a", "us-west-2b"]
 }
 variable "sg_name" {
-  type = string
+  type    = string
   default = "allclear"
 }
 variable "instances_info" {
@@ -19,15 +19,15 @@ variable "instances_info" {
     availability_zone = string
   }))
   default = {
-   "ansible" = {
-    instance_type     = "t2.micro"
-    key_name          = "impkey"
-    availability_zone = "us-west-2a"
-    user_data         = "ansible.sh"
-  }
+    "ansible" = {
+      instance_type     = "t2.micro"
+      key_name          = "impkey"
+      availability_zone = "us-west-2a"
+      user_data         = "ansible.sh"
+    }
   }
 }
 variable "null" {
-  type = string
+  type    = string
   default = "11"
 }
