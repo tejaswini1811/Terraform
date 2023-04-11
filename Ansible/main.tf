@@ -45,7 +45,7 @@ resource "null_resource" "null" {
   connection {
     host        = aws_instance.instances[each.key].public_ip
     user        = "ubuntu"
-    private_key = file("~/.ssh/id_rsa")
+    private_key = file("/home/ubuntu/.ssh/id_rsa")
     type        = "ssh"
   }
   provisioner "file" {
@@ -55,6 +55,7 @@ resource "null_resource" "null" {
   provisioner "remote-exec" {
     inline = [
       "sh /tmp/ansible.sh"
+      
     ]
   }
   depends_on = [

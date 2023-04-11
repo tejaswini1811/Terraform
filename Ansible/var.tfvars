@@ -9,4 +9,4 @@ instances_info = {
     user_data         = "ansible.sh"
   }
 }
-null = "111"
+null = "1118"
