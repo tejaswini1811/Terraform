@@ -17,7 +17,7 @@ pipeline{
         }
         stage('terraform apply'){
             steps{
-              sh 'terraform apply -var-file Ansible/var.tfvars --auto-approve' 
+              sh 'terraform apply -var-file var.tfvars --auto-approve' 
             }
         }
     }
