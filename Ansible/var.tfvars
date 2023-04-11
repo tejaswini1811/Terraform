@@ -4,7 +4,7 @@ sg_name           = "allclear"
 instances_info = {
   "ansible" = {
     instance_type     = "t2.micro"
-    key_name          = "impkey"
+    key_name          = "jenkins"
     availability_zone = "us-west-2a"
     user_data         = "ansible.sh"
   }
