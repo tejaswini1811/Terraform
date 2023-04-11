@@ -32,7 +32,7 @@ resource "aws_instance" "instances" {
   key_name          = each.value.key_name
   availability_zone = each.value.availability_zone
   security_groups   = [data.aws_security_group.all_clear.name]
-  user_data         = file(each.value.user_data)
+  #user_data         = file(each.value.user_data)
   tags = {
     "Name" = each.key
   }
