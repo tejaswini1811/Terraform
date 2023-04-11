@@ -9,15 +9,15 @@ pipeline{
         }
         stage('terraform initialization'){
             steps{
-             sh: 'terraform init',
-                'terraform validate',
-                'terrafrom fmt'
+             sh 'terraform init'
+              sh  'terraform validate'
+               sh 'terrafrom fmt'
             }
 
         }
         stage('terraform apply'){
             steps{
-              sh: 'terrafrom apply -var-file var.tfvars -auto-approve' 
+              sh 'terrafrom apply -var-file var.tfvars -auto-approve' 
             }
         }
     }
